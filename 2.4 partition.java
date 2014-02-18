@@ -12,8 +12,6 @@ LinkedListNode partition(LinkedListNode head, int x) {
 		if (head.data < x) {
 			if (frontStart == null) {
 				frontStart = head;
-			}
-			if (frontEnd == null) {
 				frontEnd = head;
 			} else {
 				frontEnd.next = head;
@@ -22,8 +20,6 @@ LinkedListNode partition(LinkedListNode head, int x) {
 		} else {
 			if (behindStart == null) {
 				behindStart = head;
-			}
-			if (behindEnd == null) {
 				behindEnd = head;
 			} else {
 				behindEnd.next = head;
