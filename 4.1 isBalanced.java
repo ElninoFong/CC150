@@ -13,3 +13,38 @@ boolean isBalanced(TreeNode root) {
 	if (diff > 1) return false;
 	return isBalanced(root.left) && isBalanced(root.right);
 }
+
+
+// return -1 when not balanced in any subtree
+// TC: O(n), SC: O(H)
+int checkHeight(TreeNode node) {
+	if (node == null) return 0;
+	
+	// check if left subtree is balanced
+	int leftHeight = checkHeight(node.left);
+	if (leftHeight == -1) {
+		return -1;
+	}
+
+	// check if right subtree is balanced
+	int rightHeight = checkHeight(node.right);
+	if (rightHeight == -1) {
+		return -1;
+	}
+
+	// check if node is balanced
+	if (Math.abs(leftHeight - rightHeight) > 1) {
+		return -1;
+	} else {
+		return Math.max(leftHeight, rightHeight) + 1;
+	}
+
+}
+
+boolean isBalanced2(TreeNode root) {
+	if (checkHeight(root) == -1) {
+		return false;
+	} else {
+		return true;
+	}
+}
